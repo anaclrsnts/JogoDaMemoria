@@ -5,6 +5,7 @@ const stopButton = document.getElementById("stop");
 const gameContainer = document.querySelector(".game-container");
 const result = document.getElementById("result");
 const controls = document.querySelector(".controls-container");
+const wrapper = document.querySelector(".wrapper")
 let cards;
 let interval;
 let firstCard = false;
@@ -90,11 +91,14 @@ const matrixGenerator = (cardValues, size = 4) => {
                         secondCard.classList.add("matched");
                         firstCard = false;
                         winCount += 1;
-                        if (winCount == Math.floor(cardValues.length / 2)) {
-                            result.innerHTML = `<h2>You Won</h2>
-            <h4>Moves: ${movesCount}</h4>`;
-                            stopGame();
-                        }
+                        setTimeout(() => {
+                            if (winCount == Math.floor(cardValues.length / 2)) {
+                                result.innerHTML = `<h2>You Won</h2>
+                <h4>Moves: ${movesCount}</h4>`;
+                                stopGame();
+                            };
+                        }, 650);
+
                     } else {
                         let [tempFirst, tempSecond] = [firstCard, secondCard];
                         firstCard = false;
@@ -102,7 +106,7 @@ const matrixGenerator = (cardValues, size = 4) => {
                         let delay = setTimeout(() => {
                             tempFirst.classList.remove("flipped");
                             tempSecond.classList.remove("flipped");
-                        }, 900);
+                        }, 800);
                     }
                 }
             }
@@ -117,6 +121,7 @@ startButton.addEventListener("click", () => {
     controls.classList.add("hide");
     stopButton.classList.remove("hide");
     startButton.classList.add("hide");
+    wrapper.classList.remove("hide");
     interval = setInterval(timeGenerator, 1000);
     moves.innerHTML = `<span>Moves:</span> ${movesCount}`;
     initializer();
@@ -125,8 +130,8 @@ startButton.addEventListener("click", () => {
 stopButton.addEventListener(
     "click",
     (stopGame = () => {
+        wrapper.classList.add("hide");
         controls.classList.remove("hide");
-        stopButton.classList.add("hide");
         startButton.classList.remove("hide");
         clearInterval(interval);
     })
