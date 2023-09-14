@@ -1,3 +1,3 @@
-# Cars Themed Memory Game
+# Cars Themed Matchin Game
 Jogo da memória com tema do filme Carros da Pixar desenvolvido utilizando JavaScript, HTML e CSS.
-- [🔗 Cars Memory Game](https://anaclrsnts.github.io/JogoDaMemoria/)
+- [🔗 Cars Matchin Game](https://anaclrsnts.github.io/JogoDaMemoria/)
